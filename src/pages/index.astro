@@ -105,8 +105,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				const worlds = await fetch(`https://api.wubbygame.com/v1/searchworld?query=${keyword}&limit=100`)
 					.then(res => res.json())
 
-				console.log(worlds)
-
 				return worlds
 			}
 
@@ -153,6 +151,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					const worldImage = document.createElement('img')
 					const worldDescription = document.createElement('p')
 					const worldId = document.createElement('p')
+					const worldOwner = document.createElement('p')
 					const playButton = document.createElement('button')
 					listItem.style.textAlign = "center"
 					worldName.textContent = world.name
@@ -167,6 +166,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					playButton.addEventListener('click', () => {
 						window.location.href = `https://wubbygame.com/world/${world.id}`
 					})
+
+					worldOwner.textContent = `Owner: https://roblox.com/users/${world.creator}/profile`
+					worldOwner.style.fontSize = '0.7em'
+
 					worldList.appendChild(listItem)
 					listItem.appendChild(worldName)
 					listItem.appendChild(worldImage)
